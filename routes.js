@@ -1,14 +1,12 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
+const authorController = require('./controller/author')
 
-app.get('/api', (req, res) => {
-    res.send('Hello this is our api')
-});
-app.get('/getFormData', (req, res) => {
-    res.send('Hello this is form data')
-});
-app.get('/loginData', (req, res) => {
-    res.send('Hello this is login data')
-});
+/* ---------------- AUTHOR ------------------*/
+router.get('/get-authors', authorController.getAuthors);
+router.get('/get-author/:id', authorController.getAuthorById);
+router.post('/add-author', authorController.addAuthor);
+router.post('/update-author', authorController.updateAuthor);
+router.post('/delete-author', authorController.deleteAuthor);
 
-module.exports = app;
+module.exports = router;
