@@ -44,8 +44,8 @@ const authorController = {
     },
     updateAuthor: (req, res) => {
         return new Promise((resolve, reject) => {
-            AuthorModel.update({ city: req.body.city }, { where: { name: req.body.name } })
-                .then(saved => {
+            AuthorModel.update({ city: req.body.city, updated_by: req.body.userId }, { where: { name: req.body.name } })
+                .then((saved) => {
                     resolve(res.status(200).send('updated successfully'));
                 })
                 .catch(err => {
